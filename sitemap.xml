@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://realgeek.ir/articles/</loc>
+    <lastmod>2026-02-23T09:09:55-07:00</lastmod>
+  </url><url>
+    <loc>https://realgeek.ir/articles/cli-tools-notes/</loc>
+    <lastmod>2026-02-23T09:09:55-07:00</lastmod>
+  </url><url>
+    <loc>https://realgeek.ir/</loc>
+    <lastmod>2026-02-23T09:09:55-07:00</lastmod>
+  </url><url>
+    <loc>https://realgeek.ir/articles/psiphon-linux-service/</loc>
+    <lastmod>2026-02-22T09:09:55-07:00</lastmod>
+  </url><url>
+    <loc>https://realgeek.ir/categories/</loc>
+  </url><url>
+    <loc>https://realgeek.ir/tags/</loc>
+  </url>
+</urlset>

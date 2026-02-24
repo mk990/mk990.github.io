@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>CLI Tools Notes // Mk990 Website</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.156.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="/css/main.min.5b1fcc8902588589c4767187402a3c29f8b8d7a6fdef6d9f8f77045bb0d14fee.css" />
+    
+
+    
+    
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="CLI Tools Notes">
+  <meta name="twitter:description" content="CLI Tools Notes This document describes three command-line tools I use:
+croc – secure file transfer jrnl – command-line journaling grex – generate regex from examples croc croc is a simple and secure tool for sending files and folders between computers using the terminal. It works across platforms and handles encryption automatically.
+# Install sudo pacman -S croc # Send a file croc send file.txt #Receive a file CROC_SECRET=&#34;********&#34; croc Why I use croc Very easy file sharing End-to-end encryption No server setup required Works behind firewalls and NAT jrnl jrnl is a command-line journaling and note-taking application. Notes are stored as plain text and can be encrypted.">
+
+    <meta property="og:url" content="https://realgeek.ir/articles/cli-tools-notes/">
+  <meta property="og:site_name" content="Mk990 Website">
+  <meta property="og:title" content="CLI Tools Notes">
+  <meta property="og:description" content="CLI Tools Notes This document describes three command-line tools I use:
+croc – secure file transfer jrnl – command-line journaling grex – generate regex from examples croc croc is a simple and secure tool for sending files and folders between computers using the terminal. It works across platforms and handles encryption automatically.
+# Install sudo pacman -S croc # Send a file croc send file.txt #Receive a file CROC_SECRET=&#34;********&#34; croc Why I use croc Very easy file sharing End-to-end encryption No server setup required Works behind firewalls and NAT jrnl jrnl is a command-line journaling and note-taking application. Notes are stored as plain text and can be encrypted.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="articles">
+    <meta property="article:published_time" content="2026-02-23T09:09:55-07:00">
+    <meta property="article:modified_time" content="2026-02-23T09:09:55-07:00">
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="/"><img class="app-header-avatar" src="/avatar.jpg" alt="John Doe" /></a>
+      <span class="app-header-title">Mk990 Website</span>
+      <p>my personal website nothing special just for fun</p>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">CLI Tools Notes</h1>
+      <div class="post-meta">
+        <div>
+          <svg class="icon icon-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>calendar</title><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          Feb 23, 2026
+        </div>
+        <div>
+          <svg class="icon icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>clock</title><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          2 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <h1 id="cli-tools-notes">CLI Tools Notes</h1>
+<p>This document describes three command-line tools I use:</p>
+<ul>
+<li>croc – secure file transfer</li>
+<li>jrnl – command-line journaling</li>
+<li>grex – generate regex from examples</li>
+</ul>
+<hr>
+<h2 id="croc">croc</h2>
+<p>croc is a simple and secure tool for sending files and folders between computers using the terminal. It works across platforms and handles encryption automatically.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Install</span>
+</span></span><span style="display:flex;"><span>sudo pacman -S croc
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Send a file</span>
+</span></span><span style="display:flex;"><span>croc send file.txt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#Receive a file</span>
+</span></span><span style="display:flex;"><span>CROC_SECRET<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;********&#34;</span> croc
+</span></span></code></pre></div><h3 id="why-i-use-croc">Why I use croc</h3>
+<ul>
+<li>Very easy file sharing</li>
+<li>End-to-end encryption</li>
+<li>No server setup required</li>
+<li>Works behind firewalls and NAT</li>
+</ul>
+<hr>
+<h2 id="jrnl">jrnl</h2>
+<p>jrnl is a command-line journaling and note-taking application. Notes are stored as plain text and can be encrypted.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Install</span>
+</span></span><span style="display:flex;"><span>sudo pacman -S jrnl
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Write a journal entry</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>jrnl <span style="color:#e6db74">&#34;Today I learned about croc&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Open editor mode</span>
+</span></span><span style="display:flex;"><span>jrnl
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Show last 5 entries</span>
+</span></span><span style="display:flex;"><span>jrnl -n <span style="color:#ae81ff">5</span>
+</span></span></code></pre></div><p>Why I use jrnl</p>
+<ul>
+<li>Fast note-taking from terminal</li>
+<li>Plain text and searchable</li>
+<li>Great for daily logs and thoughts</li>
+</ul>
+<hr>
+<h3 id="grex">grex</h3>
+<p>grex generates regular expressions from example strings. It is very useful when you know what strings you want to match but don’t want to write regex manually.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Install</span>
+</span></span><span style="display:flex;"><span>sudo pacman -S grex
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Generate a regex</span>
+</span></span><span style="display:flex;"><span>grex <span style="color:#e6db74">&#34;user_123&#34;</span> <span style="color:#e6db74">&#34;user_456&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Example output</span>
+</span></span><span style="display:flex;"><span>user_<span style="color:#ae81ff">\d</span>+
+</span></span></code></pre></div><h2 id="why-i-use-grex">Why I use grex</h2>
+<ul>
+<li>Saves time writing regex</li>
+<li>Reduces mistakes</li>
+<li>Helpful for log parsing and validation</li>
+</ul>
+<h3 id="summary">Summary</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Tool</th>
+          <th>Purpose</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>croc</td>
+          <td>Secure file transfer</td>
+      </tr>
+      <tr>
+          <td>jrnl</td>
+          <td>Command-line journaling</td>
+      </tr>
+      <tr>
+          <td>grex</td>
+          <td>Regex generation from examples</td>
+      </tr>
+  </tbody>
+</table>
+<p>These tools help me stay productive while working entirely in the terminal.</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

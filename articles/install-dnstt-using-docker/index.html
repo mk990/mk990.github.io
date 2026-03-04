@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <title>How to install slipstream or dnstt with gost using docker // Mk990 Website</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.156.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Mohammad Hemmati" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="/css/main.min.5b1fcc8902588589c4767187402a3c29f8b8d7a6fdef6d9f8f77045bb0d14fee.css" />
+    
+
+    
+    
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="How to install slipstream or dnstt with gost using docker">
+  <meta name="twitter:description" content="How to Install dnstt &#43; gost Using Docker This guide explains how to install and configure dnstt with gost using Docker and Docker Compose.
+1. Install Docker apt update apt install docker.io docker-compose -y systemctl enable docker systemctl start docker 2. Create Docker Network docker network create web_net Main Setup (dnstt &#43; gost) 3. Create compose.yml --- name: dnstt-server networks: web_net: name: web_net external: true services: watchtower: image: containrrr/watchtower container_name: watchtower command: - &#34;--cleanup&#34; - &#34;--label-enable&#34; - &#34;--interval&#34; - &#34;3600&#34; - &#34;--rolling-restart&#34; volumes: - /var/run/docker.sock:/var/run/docker.sock restart: unless-stopped networks: - web_net gost: image: ginuerzh/gost container_name: gost restart: unless-stopped command: &#34;-L=username:password@:8088&#34; networks: - web_net labels: - com.centurylinklabs.watchtower.enable=true dnstt: image: mk990/tun container_name: dnstt volumes: - ./dnstt:/config entrypoint: &gt; dnstt-server -udp :53 -privkey-file /config/server.key ${DNSTT_DOMAIN} gost:8088 ports: - 53:53/udp restart: unless-stopped networks: - web_net labels: - com.centurylinklabs.watchtower.enable=true 4. Create .env File DNSTT_DOMAIN=nstest.example.com 5. Generate Server and Client Keys mkdir dnstt docker run --rm -w /config -v ./dnstt:/config -it mk990/tun dnstt-server -gen-key -privkey-file server.key -pubkey-file client.key Show the public key:">
+
+    <meta property="og:url" content="http://localhost:1313/articles/install-dnstt-using-docker/">
+  <meta property="og:site_name" content="Mk990 Website">
+  <meta property="og:title" content="How to install slipstream or dnstt with gost using docker">
+  <meta property="og:description" content="How to Install dnstt &#43; gost Using Docker This guide explains how to install and configure dnstt with gost using Docker and Docker Compose.
+1. Install Docker apt update apt install docker.io docker-compose -y systemctl enable docker systemctl start docker 2. Create Docker Network docker network create web_net Main Setup (dnstt &#43; gost) 3. Create compose.yml --- name: dnstt-server networks: web_net: name: web_net external: true services: watchtower: image: containrrr/watchtower container_name: watchtower command: - &#34;--cleanup&#34; - &#34;--label-enable&#34; - &#34;--interval&#34; - &#34;3600&#34; - &#34;--rolling-restart&#34; volumes: - /var/run/docker.sock:/var/run/docker.sock restart: unless-stopped networks: - web_net gost: image: ginuerzh/gost container_name: gost restart: unless-stopped command: &#34;-L=username:password@:8088&#34; networks: - web_net labels: - com.centurylinklabs.watchtower.enable=true dnstt: image: mk990/tun container_name: dnstt volumes: - ./dnstt:/config entrypoint: &gt; dnstt-server -udp :53 -privkey-file /config/server.key ${DNSTT_DOMAIN} gost:8088 ports: - 53:53/udp restart: unless-stopped networks: - web_net labels: - com.centurylinklabs.watchtower.enable=true 4. Create .env File DNSTT_DOMAIN=nstest.example.com 5. Generate Server and Client Keys mkdir dnstt docker run --rm -w /config -v ./dnstt:/config -it mk990/tun dnstt-server -gen-key -privkey-file server.key -pubkey-file client.key Show the public key:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="articles">
+    <meta property="article:published_time" content="2026-03-02T09:09:55-07:00">
+    <meta property="article:modified_time" content="2026-03-02T09:09:55-07:00">
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="/"><img class="app-header-avatar" src="/avatar.jpg" alt="Mohammad Hemmati" /></a>
+      <span class="app-header-title">Mk990 Website</span>
+      <p>my personal website nothing special just for fun</p>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">How to install slipstream or dnstt with gost using docker</h1>
+      <div class="post-meta">
+        <div>
+          <svg class="icon icon-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>calendar</title><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          Mar 2, 2026
+        </div>
+        <div>
+          <svg class="icon icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>clock</title><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          2 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <h1 id="how-to-install-dnstt--gost-using-docker">How to Install dnstt + gost Using Docker</h1>
+<p>This guide explains how to install and configure dnstt with gost using
+Docker and Docker Compose.</p>
+<hr>
+<h2 id="1-install-docker">1. Install Docker</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apt update
+</span></span><span style="display:flex;"><span>apt install docker.io docker-compose -y
+</span></span><span style="display:flex;"><span>systemctl enable docker
+</span></span><span style="display:flex;"><span>systemctl start docker
+</span></span></code></pre></div><hr>
+<h2 id="2-create-docker-network">2. Create Docker Network</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker network create web_net
+</span></span></code></pre></div><hr>
+<h1 id="main-setup-dnstt--gost">Main Setup (dnstt + gost)</h1>
+<h2 id="3-create-composeyml">3. Create compose.yml</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">dnstt-server</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">networks</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">web_net</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">web_net</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">external</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">watchtower</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">containrrr/watchtower</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">watchtower</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">command</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;--cleanup&#34;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;--label-enable&#34;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;--interval&#34;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;3600&#34;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;--rolling-restart&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">/var/run/docker.sock:/var/run/docker.sock</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">unless-stopped</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">networks</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">web_net</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">gost</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">ginuerzh/gost</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">gost</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">unless-stopped</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">command</span>: <span style="color:#e6db74">&#34;-L=username:password@:8088&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">networks</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">web_net</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">com.centurylinklabs.watchtower.enable=true</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">dnstt</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">mk990/tun</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">dnstt</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">./dnstt:/config</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">entrypoint</span>: &gt;<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      dnstt-server -udp :53
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      -privkey-file /config/server.key
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      ${DNSTT_DOMAIN}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      gost:8088</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">53</span>:<span style="color:#ae81ff">53</span><span style="color:#ae81ff">/udp</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">unless-stopped</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">networks</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">web_net</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">com.centurylinklabs.watchtower.enable=true</span>
+</span></span></code></pre></div><hr>
+<h2 id="4-create-env-file">4. Create .env File</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#a6e22e">DNSTT_DOMAIN</span><span style="color:#f92672">=</span><span style="color:#e6db74">nstest.example.com</span>
+</span></span></code></pre></div><hr>
+<h2 id="5-generate-server-and-client-keys">5. Generate Server and Client Keys</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir dnstt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>docker run --rm -w /config -v ./dnstt:/config -it mk990/tun dnstt-server -gen-key -privkey-file server.key -pubkey-file client.key
+</span></span></code></pre></div><p>Show the public key:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat dnstt/client.key
+</span></span></code></pre></div><p>Save the public key for client connection.</p>
+<hr>
+<h2 id="6-disable-systemd-dns-resolver-ubuntu">6. Disable systemd DNS Resolver (Ubuntu)</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>systemctl disable systemd-resolved.service
+</span></span><span style="display:flex;"><span>systemctl stop systemd-resolved.service
+</span></span><span style="display:flex;"><span>rm -f /etc/resolv.conf
+</span></span><span style="display:flex;"><span>echo -e <span style="color:#e6db74">&#34;nameserver 1.1.1.1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">nameserver 8.8.8.8&#34;</span> &gt; /etc/resolv.conf
+</span></span></code></pre></div><hr>
+<h2 id="7-configure-docker-dns">7. Configure Docker DNS</h2>
+<p>Edit /etc/docker/daemon.json:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;dns&#34;</span>: [<span style="color:#e6db74">&#34;1.1.1.1&#34;</span>, <span style="color:#e6db74">&#34;8.8.8.8&#34;</span>],
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;log-opts&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;max-file&#34;</span>: <span style="color:#e6db74">&#34;5&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;max-size&#34;</span>: <span style="color:#e6db74">&#34;10m&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Restart Docker:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>systemctl restart docker
+</span></span></code></pre></div><hr>
+<h2 id="8-configure-dns-records">8. Configure DNS Records</h2>
+<p>Add these DNS records to your domain:</p>
+<pre><code>nstestip    IN  A   SERVER_IP
+nstest      IN  NS  nstestip.example.com.
+</code></pre>
+<p>Replace SERVER_IP with your public server IP.</p>
+<hr>
+<h2 id="9-start-the-stack">9. Start the Stack</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker compose up -d
+</span></span></code></pre></div><hr>
+<h2 id="10-connect-to-the-server">10. Connect to the Server</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./dnstt-client -udp 8.8.8.8:53 -pubkey YOUR_PUBLIC_KEY nstestip.example.com 127.0.0.1:7000
+</span></span></code></pre></div><p>If everything is correct, you will have a SOCKS5 proxy at:</p>
+<p>127.0.0.1:7000</p>
+<hr>
+<h1 id="optional-slipstream-setup">Optional: Slipstream Setup</h1>
+<p>If you prefer using slipstream-server instead of dnstt, use the
+following compose configuration.</p>
+<h2 id="slipstream-composeyml">Slipstream <code>compose.yml</code></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">dnstt-server</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">networks</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">web_net</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">web_net</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">external</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">watchtower</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">containrrr/watchtower</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">watchtower</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">command</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;--cleanup&#34;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;--label-enable&#34;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;--interval&#34;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;3600&#34;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;--rolling-restart&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">/var/run/docker.sock:/var/run/docker.sock</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">unless-stopped</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">networks</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">web_net</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">gost</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">ginuerzh/gost</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">gost</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">unless-stopped</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">command</span>: <span style="color:#e6db74">&#34;-L=username:password@:8088&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">networks</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">web_net</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">com.centurylinklabs.watchtower.enable=true</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">slipstream</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">mk990/tun</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">slipstream</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">command</span>: <span style="color:#e6db74">&#34;slipstream-server --dns-listen-port 53 --target-address gost:8088 --domain ${DNSTT_DOMAIN} --cert /certs/cert.pem --key /certs/key.pem&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">./slipstream:/certs</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">networks</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">web_net</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">53</span>:<span style="color:#ae81ff">53</span><span style="color:#ae81ff">/udp</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">com.centurylinklabs.watchtower.enable=true</span>
+</span></span></code></pre></div><h2 id="create-ssl-certificate-for-slipstream">Create SSL Certificate for Slipstream</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir slipstream
+</span></span><span style="display:flex;"><span>cd slipstream
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>openssl req -x509 -newkey rsa:2048 -nodes -keyout key.pem -out cert.pem -days <span style="color:#ae81ff">365</span> -subj <span style="color:#e6db74">&#34;/CN=US&#34;</span>
+</span></span></code></pre></div><h2 id="connect-to-the-server">Connect to the Server</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./slipstream-client --tcp-listen-port <span style="color:#ae81ff">7000</span> --resolver 8.8.8.8:53 --domain nstestip.example.com.
+</span></span></code></pre></div><hr>
+<p>Good luck and happy hacking.</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

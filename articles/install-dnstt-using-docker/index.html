@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en-us">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <head>
     <title>How to install slipstream or dnstt with gost using docker // Mk990 Website</title>
     <link rel="shortcut icon" href="/favicon.ico" />
     <meta charset="utf-8" />
@@ -18,7 +18,7 @@
   <meta name="twitter:description" content="How to Install dnstt &#43; gost Using Docker This guide explains how to install and configure dnstt with gost using Docker and Docker Compose.
 1. Install Docker apt update apt install docker.io docker-compose -y systemctl enable docker systemctl start docker 2. Create Docker Network docker network create web_net Main Setup (dnstt &#43; gost) 3. Create compose.yml --- name: dnstt-server networks: web_net: name: web_net external: true services: watchtower: image: containrrr/watchtower container_name: watchtower command: - &#34;--cleanup&#34; - &#34;--label-enable&#34; - &#34;--interval&#34; - &#34;3600&#34; - &#34;--rolling-restart&#34; volumes: - /var/run/docker.sock:/var/run/docker.sock restart: unless-stopped networks: - web_net gost: image: ginuerzh/gost container_name: gost restart: unless-stopped command: &#34;-L=username:password@:8088&#34; networks: - web_net labels: - com.centurylinklabs.watchtower.enable=true dnstt: image: mk990/tun container_name: dnstt volumes: - ./dnstt:/config entrypoint: &gt; dnstt-server -udp :53 -privkey-file /config/server.key ${DNSTT_DOMAIN} gost:8088 ports: - 53:53/udp restart: unless-stopped networks: - web_net labels: - com.centurylinklabs.watchtower.enable=true 4. Create .env File DNSTT_DOMAIN=nstest.example.com 5. Generate Server and Client Keys mkdir dnstt docker run --rm -w /config -v ./dnstt:/config -it mk990/tun dnstt-server -gen-key -privkey-file server.key -pubkey-file client.key Show the public key:">
 
-    <meta property="og:url" content="http://localhost:1313/articles/install-dnstt-using-docker/">
+    <meta property="og:url" content="https://realgeek.ir/articles/install-dnstt-using-docker/">
   <meta property="og:site_name" content="Mk990 Website">
   <meta property="og:title" content="How to install slipstream or dnstt with gost using docker">
   <meta property="og:description" content="How to Install dnstt &#43; gost Using Docker This guide explains how to install and configure dnstt with gost using Docker and Docker Compose.
@@ -207,6 +207,7 @@ following compose configuration.</p>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">slipstream</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">mk990/tun</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">slipstream</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">unless-stopped</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">command</span>: <span style="color:#e6db74">&#34;slipstream-server --dns-listen-port 53 --target-address gost:8088 --domain ${DNSTT_DOMAIN} --cert /certs/cert.pem --key /certs/key.pem&#34;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
 </span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">./slipstream:/certs</span>

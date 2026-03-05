@@ -2,23 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/articles/</loc>
+    <loc>https://realgeek.ir/articles/</loc>
     <lastmod>2026-03-02T09:09:55-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/articles/install-dnstt-using-docker/</loc>
+    <loc>https://realgeek.ir/articles/install-dnstt-using-docker/</loc>
     <lastmod>2026-03-02T09:09:55-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://realgeek.ir/</loc>
     <lastmod>2026-03-02T09:09:55-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/articles/cli-tools-notes/</loc>
+    <loc>https://realgeek.ir/articles/cli-tools-notes/</loc>
     <lastmod>2026-02-23T09:09:55-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/articles/psiphon-linux-service/</loc>
+    <loc>https://realgeek.ir/articles/psiphon-linux-service/</loc>
     <lastmod>2026-02-22T09:09:55-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://realgeek.ir/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://realgeek.ir/tags/</loc>
   </url>
 </urlset>
